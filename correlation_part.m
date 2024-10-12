@@ -10,7 +10,8 @@ three_mol=zeros(total_molecules,3);
 four_mol=zeros(total_molecules,4);
 added_molecules=zeros(total_frames+3,1);
 
-%Finding some useful data with available data 
+%FINDING ADDITONAL DATA WITH AVAILABLE DATA ---------------------------------------------------
+
 for i=1:total_molecules
     mole=frame_num_all(i,1);
     molecules_per_frame(mole,1)= molecules_per_frame(mole,1)+1;
