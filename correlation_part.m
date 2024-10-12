@@ -85,7 +85,7 @@ final_two(tf2,:)=[];
    fprintf(1,'Number of molecules repeated in two frames are %lu\n', num_two_repeated);
    
   
-  %% The correlation part
+  %% THE CORRELATION PART -------------------------------------------------------------------
  
 cut_off=0.7;  % this is the correlation cutoff
 final_two_copy=final_two;
@@ -125,7 +125,7 @@ TF=final_cor_mol(:,1);
    tf2=TF==0;
    final_cor_mol(tf2,:)=[];
    
-%% Storing Molecule info for rendering the final image
+%% STORING MOLECULE INFO FOR RENDERING THE FINAL IMAGE --------------------------------
 
   final_two=final_cor_mol;
    final_two_copy=final_two;
@@ -147,7 +147,7 @@ for i=1 : size(final_two,1)
   end
 end
 
-%getting molecules from g sort
+%GETTING MOLECULES FROM G SORT ---------------------------------------
 G_arr_copy=G_arr;
 g_sort_copy=g_sort;
 %final two
