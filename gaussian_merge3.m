@@ -1,3 +1,5 @@
+% CALL FUNCTION- GAUSSIAN FITTING -------------------------
+
 function yfit=gaussian_merge(beta,xdummy)
   global xpix ypix wbox;
  
@@ -10,3 +12,4 @@ for i=1:wbox
     end
 end
 
+% ----------------------------------------------------------
