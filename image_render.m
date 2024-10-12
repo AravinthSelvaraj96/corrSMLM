@@ -1,4 +1,4 @@
-% This program renders the final image
+% This program renders the final image. output from correlation part should be given as input
 
  G_arr=G_arr1; %as the output of correlation part code saved as G_arr1
 xw=size(iprod,2);%width of the image
