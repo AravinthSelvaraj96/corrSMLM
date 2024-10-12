@@ -1,7 +1,6 @@
-% This program renders the final image output of code two is the input of
-% this program
+% This program renders the final image
 
- G_arr=G_arr1; %as the output of code2 saved as G_arr1
+ G_arr=G_arr1; %as the output of correlation part code saved as G_arr1
 xw=size(iprod,2);%width of the image
 yw=size(iprod,1);%height of the image
 
@@ -9,7 +8,7 @@ yw=size(iprod,1);%height of the image
 expf=15;%expansion factor
 q=0.06;%nm pixel size
 A=1; % amplitude of gaussian function
-cut_off=2; % this is to render image with nyquist criteria
+cut_off=2; % cutoff in rendering molecule
 image=zeros(yw*expf,xw*expf);
 stop=size(G_arr,1);
 box_size=7*expf; % 30x 30 gaussian will be generated
