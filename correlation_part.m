@@ -1,5 +1,5 @@
 % This program detects the fortunate molecules
-% the output matlab file from code1 should be given as the input for this
+% the output matlab file from molecule detection code should be given as the input for this
 % code. So load that file in the workspace.
 
 total_frames=max(frame_num_all);
