@@ -1,3 +1,5 @@
+% RECURSIVE FUNCTION SORTS MOLECULES ------------------------- 
+
 function [final_two,g_sort]=repeated_molecules_sort(i,k,b,final_two,g_sort)
 %g_sort(i,1:2)=final_two(i,1:2);
 g_sort(i,k)=final_two(b,2);
@@ -11,5 +13,5 @@ final_two(b,1:2)=0;
     end
 end
 
-
+%---------------------------------------------------------------
 
