@@ -9,7 +9,10 @@ clc
 warning off
 global xpix ypix wbox; %sets global variables that can be referenced in other m files
 
+
+% INITIALIZING VARIABLES -----------------------------------------------------------
 % provide info about where the raw file is and where the result should be saved
+
 data_dir = '/Volumes/Aravinth/d2at_folder/'; %raw file folder address
 an_dir =  '/Volumes/Aravinth/d2at_folder/result/'; %Output file will be put here
 base_name='d2at'; %name of the tif file
@@ -76,8 +79,10 @@ n_fail_outbox=0; %Related to failure but not sure how.
 count=0;
 grab_mol=zeros((2*rbox+1),(2*rbox+1),50000); % to get the each spot as a matrix
 
+% ----------------------------------------------------------------------------------
 
-% finding background noise
+
+% FINDING BACKGROUND NOISE -----------------------------------------------------------
 
 if(exist('bkgn','var')==0) 
     bkgn=bg_noise_calc01(imagefile,pix_to_pho); 
@@ -96,9 +101,10 @@ wb_norm = n_end-n_start;
 if wb_norm == 0 
     wb_norm = 1; 
 end 
+% ----------------------------------------------------------------------------------
 
 
-
+% FINDING SPOT & GAUSSIAN FIT -----------------------------------------------------------
 for fileloop=n_start:n_end
     compl = (fileloop-n_start)/wb_norm; 
     
@@ -279,8 +285,10 @@ for fileloop=n_start:n_end
     drawnow; 
     
 end
+% ----------------------------------------------------------------------------------
 
 
+% SAVING PARAMETERS & APPLYING CONDITIONS ---------------------------------------------
 xcm_all=xcm_all(1:total_molecules);
 ycm_all=ycm_all(1:total_molecules);
 xf_all=xf_all(1:total_molecules);
@@ -305,10 +313,7 @@ N=npix_all.*a0_all; % number of photons for each molecule
 %Calculating the parameters 
             lp2=((r0_all*q).^2+(q^2)/12)*1./N+8*pi*((r0_all*q).^4)*(bkgn^2)/(q^2)*1./(N.*N);
             lp=sqrt(lp2); %loc prec in um 
-       
-
-     
-           
+            
              G_arr = [N npix_all xcm_all ycm_all xf_all yf_all a0_all r0_all off_all frame_num_all xf_err_all yf_err_all a0_err_all r0_err_all off_err_all grab_sum_all box_matrix_xtop box_matrix_ytop lp condition_sorting];
     G_arr1=G_arr;%copy of the inital without condition
         
@@ -335,7 +340,7 @@ N=npix_all.*a0_all; % number of photons for each molecule
             G_arr(TF2,:)=[] ; 
             TF2c=TF2';
              grab_mol(:,:,TF2c)=[] ; %|Deleting the N and lp values based on zero npix_all values|
-        %-------------------------------------------------------------------------
+        %------------------------
                  
             G_arr(G_arr(:,19) >0.12,19) = 0;  
             TF3=G_arr(:,19)==0 ;
@@ -367,9 +372,12 @@ N=npix_all.*a0_all; % number of photons for each molecule
             box_matrix_ytop=G_arr(:,18);
             lp=G_arr(:,19);
             condition_sorting=G_arr(:,20);
+
+% ----------------------------------------------------------------------------------
+
         
-% saving the file
+% SAVING OUTPUT FILE  -----------------------------------------------------------
     out_file = [an_dir,base_name,'_',num2str(n_start),'-',num2str(n_end),'-',num2str(min_thresh),'.mat'];
     save(out_file); 
    time=toc/60 
-  
+% -------------------------------------------------------------------------------  
