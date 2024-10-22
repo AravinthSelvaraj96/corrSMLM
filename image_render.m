@@ -1,4 +1,9 @@
-% This program renders the final image. output from correlation part should be given as input
+% The image can be rendered in two ways one is by using the output of correlation part or output of lp_comparison part.
+% lp_comparision code finds the effective psf parameters by merging the psf. Whereas correlation part finds the effective centroid and 
+%localization precisioon by average method.
+% only G_arr matrix corresponds to each correlation factor needs to be imported to the workspace before using this program. 
+%---------------------------------------------------------------------------
+
 
 % GETTING THE SINGLE MOLECULE ARRAY DATA -------------------------------------
 G_arr=G_arr1; %as the output of correlation part code saved as G_arr1
@@ -14,7 +19,6 @@ cut_off=2; % cutoff in rendering molecule
 image=zeros(yw*expf,xw*expf);
 stop=size(G_arr,1);
 box_size=7*expf; % 30x 30 gaussian will be generated
-not_included=zeros(size(G_arr,1),1);
 x=-box_size:1:box_size;
 y=x;
 [Y X]=meshgrid(x,y);
