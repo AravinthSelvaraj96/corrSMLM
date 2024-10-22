@@ -1,4 +1,5 @@
-%workspace of correlation code should be given as input 
+%workspace of correlation code should be given as input along with grab_mol data
+% here the idea is to fit the 2D gaussian function by getting the repeated molecules id and get the effective psf data
 % this code finds the Localization precision by merging the psf of
 % fortunate molecules.
 % 
